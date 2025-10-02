@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Computer Architecture Explorer</title>
+    <!-- Load Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* Custom font import for aesthetics */
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f7f9fb;
+        }
+        /* Custom scrollbar for a cleaner look */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #cbd5e1;
+            border-radius: 4px;
+        }
+        .tab-button.active {
+            color: #ffffff;
+            background-color: #4f46e5;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+        }
+        /* Styling for the inserted images */
+        .functional-unit-image {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+            margin-top: 8px;
+            /* Added object-fit for consistent display */
+            object-fit: contain; 
+        }
+    </style>
+</head>
+<body class="min-h-screen p-4 md:p-8">
+
+    <div class="max-w-6xl mx-auto bg-white rounded-3xl shadow-2xl p-6 md:p-10">
+        
+        <!-- Header -->
+        <header class="text-center mb-10">
+            <h1 class="text-4xl font-extrabold text-gray-800 mb-2">Computer System Architecture Explorer</h1>
+            <!-- Removed the line "BCA V Semester Project: Interactive Demonstrations" -->
+        </header>
+
+        <!-- Navigation Tabs -->
+        <nav class="flex justify-center mb-8">
+            <button class="tab-button active transition-all duration-300 px-6 py-3 rounded-l-xl text-sm md:text-base font-semibold text-gray-700 bg-gray-100 hover:bg-indigo-500 hover:text-white" onclick="showTab('units-explorer')">
+                Functional Units
+            </button>
+            <button class="tab-button transition-all duration-300 px-6 py-3 text-sm md:text-base font-semibold text-gray-700 bg-gray-100 hover:bg-indigo-500 hover:text-white" onclick="showTab('von-neumann')">
+                Von Neumann Model
+            </button>
+            <button class="tab-button transition-all duration-300 px-6 py-3 rounded-r-xl text-sm md:text-base font-semibold text-gray-700 bg-gray-100 hover:bg-indigo-500 hover:text-white" onclick="showTab('bitwise-lab')">
+                Floating Point & Bitwise
+            </button>
+        </nav>
+
+        <!-- Tab Content Containers -->
+        <div id="units-explorer" class="tab-content">
+            <h2 class="text-3xl font-bold text-gray-800 mb-6 border-b pb-2">Functional Units Explorer</h2>
+            <p class="text-gray-600 mb-6">Explore the five core functional units of a computer system. </p>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Unit Card 1: Input Unit -->
+                <div class="bg-gray-50 p-6 rounded-xl shadow-lg hover:shadow-xl transition duration-300">
+                    <h3 class="text-xl font-semibold text-indigo-700 mb-3 flex items-center"><svg class="w-6 h-6 mr-2 text-indigo-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"></path></svg>Input Unit</h3>
+                    <p class="text-gray-600 text-sm">The input unit is responsible for accepting data and instructions from the user or the environment. </p>
+                    
+                    <div class="bg-white p-4 rounded-lg border-l-4 border-indigo-500 shadow-md">
+                    <p class="font-semibold text-gray-500">Example :</p>
+                    <p class="text-sm text-gray-500"> Keyboard, Mouse, Microphone, Scanner, Camera / Webcam</p>
+                    
+                </div>
+                </div>
+                
+                <!-- Unit Card 2: Output Unit -->
+                <div class="bg-gray-50 p-6 rounded-xl shadow-lg hover:shadow-xl transition duration-300">
+                    <h3 class="text-xl font-semibold text-indigo-700 mb-3 flex items-center"><svg class="w-6 h-6 mr-2 text-indigo-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"></path></svg>Output Unit</h3>
+                    <p class="text-gray-600 text-sm">The output unit communicates the results of processing to the outside world. </p>
+                    <div class="bg-white p-4 rounded-lg border-l-4 border-indigo-500 shadow-md">
+                    <p class="font-semibold text-gray-500">Example :</p>
+                    <p class="text-sm text-gray-500"> Monitor, Printer, Speakers, Headphones / Earphones, Projector</p>
+                    
+                </div>
+                </div>
+
+                <!-- Unit Card 3: ALU (Placeholder) -->
+                <div class="bg-gray-50 p-6 rounded-xl shadow-lg hover:shadow-xl transition duration-300">
+                    <h3 class="text-xl font-semibold text-indigo-700 mb-3 flex items-center"><svg class="w-6 h-6 mr-2 text-indigo-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 3v2m6-2v2M9 19v2m6-2v2M5 9H3m2 6H3m18-6h-2m2 6h-2M7 19h10a2 2 0 002-2V7a2 2 0 00-2-2H7a2 2 0 00-2 2v10a2 2 0 002 2zM9 9h6v6H9V9z"></path></svg>ALU (Arithmetic Logic Unit)</h3>
+                    <p class="text-gray-600 text-sm">The ALU performs all arithmetic and logical operations necessary for computation. </p>
+                    
+                </div>
+
+                <!-- Unit Card 4: Control Unit (Placeholder) -->
+                <div class="bg-gray-50 p-6 rounded-xl shadow-lg hover:shadow-xl transition duration-300">
+                    <h3 class="text-xl font-semibold text-indigo-700 mb-3 flex items-center"><svg class="w-6 h-6 mr-2 text-indigo-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.001 12.001 0 002 15.464c0 3.07 1.87 5.766 4.547 7.052A11.968 11.968 0 0112 22a11.968 11.968 0 015.453-1.484C20.13 19.23 22 16.536 22 13.464l-2.091-8.156z"></path></svg>Control Unit</h3>
+                    <p class="text-gray-600 text-sm">The Control Unit directs the entire operation of the computer system by fetching, decoding, and executing instructions. </p>
+                </div>
+
+                <!-- Unit Card 5: Memory Unit (Placeholder) -->
+                <div class="bg-gray-50 p-6 rounded-xl shadow-lg hover:shadow-xl transition duration-300">
+                    <h3 class="text-xl font-semibold text-indigo-700 mb-3 flex items-center"><svg class="w-6 h-6 mr-2 text-indigo-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 7v10c0 2.21 3.582 4 8 4s8-1.79 8-4V7M4 7c0 2.21 3.582 4 8 4s8-1.79 8-4M4 7c0-2.21 3.582-4 8-4s8 1.79 8 4m0 5c0 2.21-3.582 4-8 4s-8-1.79-8-4"></path></svg>Memory Unit</h3>
+                    <p class="text-gray-600 text-sm">The Memory Unit stores data and instructions required during the processing of a task. </p>
+                </div>
+            </div>
+        </div>
+
+        <div id="von-neumann" class="tab-content hidden">
+            <h2 class="text-3xl font-bold text-gray-800 mb-6 border-b pb-2">Von Neumann Architecture Visualizer</h2>
+            <p class="text-gray-600 mb-6">This section explains the Von Neumann model, the foundation for modern computing. It demonstrates how data and instructions are handled sequentially using a specific example.</p>
+
+            <div class="bg-purple-50 p-6 rounded-xl shadow-lg mb-8">
+                <h3 class="text-xl font-semibold text-purple-700 mb-3">Core Concept & Diagram</h3>
+                <!-- START: Inserted Von Neumann Diagram -->
+                <div class="w-full bg-purple-100 rounded-lg flex items-center justify-center p-4">
+                    <img src="images/von_neumann.png" 
+                         alt="Von Neumann Architecture Block Diagram" 
+                         class="functional-unit-image max-h-96 w-auto">
+                </div>
+                <!-- END: Inserted Von Neumann Diagram -->
+            </div>
+
+            <h3 class="text-2xl font-semibold text-gray-800 mb-4">Step-by-Step Data Path Example (Uniqueness Requirement)</h3>
+            
+            <div class="space-y-4">
+                <div class="bg-white p-4 rounded-lg border-l-4 border-indigo-500 shadow-md">
+                    <p class="font-semibold text-gray-700">Step 1: Fetch</p>
+                    <p class="text-sm text-gray-500">The Program Counter (PC) value is moved to the Memory Address Register (MAR). The instruction is read from memory and placed in the Memory Buffer Register (MBR), then copied to the Instruction Register (IR).</p>
+                    
+                </div>
+                <!-- Add more steps (Decode, Execute) and link them to your AI-generated visuals -->
+                <div class="bg-white p-4 rounded-lg border-l-4 border-blue-500 shadow-md">
+                    <p class="font-semibold text-gray-700">Step 2: Decode</p>
+                    <p class="text-sm text-gray-500">The Control Unit (CU) interprets the instruction (ADD R1, R2). It determines that this is an ADD operation and identifies the source registers R1 and R2.</p>
+                    
+                </div>
+                <div class="bg-white p-4 rounded-lg border-l-4 border-green-500 shadow-md">
+                    <p class="font-semibold text-gray-700">Step 3: Execute</p>
+                    <p class="text-sm text-gray-500">The contents of R1 and R2 are sent to the ALU. The ALU performs the addition, and the result is stored back into the destination register (e.g., R1).</p>
+                    
+                </div>
+            </div>
+        </div>
+
+        <div id="bitwise-lab" class="tab-content hidden">
+            <h2 class="text-3xl font-bold text-gray-800 mb-6 border-b pb-2">Floating-Point Arithmetic and Bitwise Operations Lab</h2>
+            
+            <!-- Floating Point Interactive Calculator (UPDATED) -->
+            <div class="mb-8 p-6 bg-pink-50 rounded-xl shadow-lg">
+                <h3 class="text-2xl font-semibold text-pink-700 mb-4">Custom 10-Bit Floating-Point Representation</h3>
+                
+                <p class="text-gray-600 mb-4">Enter a decimal number to see its representation in a custom 10-bit format (1 Sign, 4 Exponent, 5 Mantissa, Bias 7).</p>
+                
+                <!-- Input -->
+                <div class="mb-6">
+                    <label for="fpInput" class="block text-sm font-medium text-gray-700">Decimal Number:</label>
+                    <div class="mt-1 flex rounded-lg shadow-sm">
+                        <input type="number" step="any" id="fpInput" value="12.5" class="flex-1 block w-full rounded-l-lg border-gray-300 p-3 focus:ring-pink-500 focus:border-pink-500">
+                        <button onclick="calculateCustomFloatingPoint()" class="bg-pink-600 hover:bg-pink-700 text-white font-bold py-3 px-6 rounded-r-lg transition duration-150 shadow-md hover:shadow-lg transform hover:scale-105">Calculate</button>
+                    </div>
+                </div>
+                
+                <!-- Output -->
+                <div id="fpResult" class="bg-white p-4 rounded-lg shadow-inner border-l-4 border-pink-400">
+                    <p class="text-gray-500">Enter a number and click 'Calculate' to see the 10-bit representation.</p>
+                </div>
+
+                
+            </div>
+
+            <!-- Bitwise Operations Interactive Lab (EXISTING) -->
+            <div class="p-6 bg-blue-50 rounded-xl shadow-lg">
+                <h3 class="text-2xl font-semibold text-blue-700 mb-4">Interactive Bitwise Operations (8-bit)</h3>
+                <p class="text-gray-600 mb-4">Enter two decimal numbers (0-255) to see the results of various bitwise operations. All calculations are performed on 8-bit binary strings.</p>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+                    <div>
+                        <label for="inputA" class="block text-sm font-medium text-gray-700">Decimal Input A (0-255):</label>
+                        <input type="number" id="inputA" value="170" min="0" max="255" class="mt-1 block w-full rounded-lg border-gray-300 shadow-sm p-3 focus:ring-blue-500 focus:border-blue-500">
+                    </div>
+                    <div>
+                        <label for="inputB" class="block text-sm font-medium text-gray-700">Decimal Input B (0-255):</label>
+                        <input type="number" id="inputB" value="85" min="0" max="255" class="mt-1 block w-full rounded-lg border-gray-300 shadow-sm p-3 focus:ring-blue-500 focus:border-blue-500">
+                    </div>
+                </div>
+
+                <div class="flex flex-wrap justify-center gap-3 mb-8">
+                    <button onclick="calculateBitwise()" class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-6 rounded-lg transition duration-150 shadow-md hover:shadow-lg transform hover:scale-105">
+                        Calculate All Operations
+                    </button>
+                </div>
+
+                <!-- Display Area -->
+                <div class="space-y-4">
+                    <div class="bg-white p-4 rounded-lg shadow-inner">
+                        <p class="font-bold text-lg text-blue-800 mb-2">Binary Representation (8-bit)</p>
+                        <div class="font-mono text-sm md:text-base">
+                            <p>A: <span id="binaryA" class="text-green-600 font-bold"></span> (Decimal: <span id="decimalA" class="font-normal text-gray-600"></span>)</p>
+                            <p>B: <span id="binaryB" class="text-green-600 font-bold"></span> (Decimal: <span id="decimalB" class="font-normal text-gray-600"></span>)</p>
+                        </div>
+                    </div>
+                    
+                    <div id="results" class="space-y-3">
+                        <!-- Results will be injected here -->
+                    </div>
+                    
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+    <script>
+        // =========================================================================
+        // JAVASCRIPT LOGIC
+        // =========================================================================
+
+        /**
+         * Converts a decimal number (0-255) to an 8-bit binary string.
+         * @param {number} dec - The decimal number.
+         * @returns {string} - The 8-bit binary string.
+         */
+        function decTo8BitBinary(dec) {
+            return (dec >>> 0).toString(2).padStart(8, '0');
+        }
+
+        /**
+         * Creates a display card for a single bitwise result.
+         * @param {string} operation - The name of the operation (e.g., "A AND B").
+         * @param {string} binaryResult - The 8-bit binary result string.
+         * @param {number} decimalResult - The decimal value of the result.
+         * @returns {string} - The HTML string for the result card.
+         */
+        function createResultCard(operation, binaryResult, decimalResult) {
+            return `
+                <div class="bg-white p-4 rounded-lg border-l-4 border-indigo-400 shadow-md hover:shadow-lg transition duration-150">
+                    <div class="flex justify-between items-center">
+                        <p class="font-semibold text-gray-800">${operation}</p>
+                        <p class="font-bold text-xl text-indigo-600">${decimalResult}</p>
+                    </div>
+                    <p class="font-mono text-lg text-indigo-500 mt-1">${binaryResult}</p>
+                    
+                </div>
+            `;
+        }
+
+
+        function calculateBitwise() {
+            const inputA = document.getElementById('inputA');
+            const inputB = document.getElementById('inputB');
+            
+            // Validate inputs
+            const decA = parseInt(inputA.value);
+            const decB = parseInt(inputB.value);
+
+            if (isNaN(decA) || isNaN(decB) || decA < 0 || decA > 255 || decB < 0 || decB > 255) {
+                document.getElementById('results').innerHTML = '<p class="text-red-500 font-semibold">Please enter valid decimal numbers between 0 and 255.</p>';
+                return;
+            }
+
+            const binA = decTo8BitBinary(decA);
+            const binB = decTo8BitBinary(decB);
+
+            // Update input displays
+            document.getElementById('binaryA').textContent = binA;
+            document.getElementById('decimalA').textContent = decA;
+            document.getElementById('binaryB').textContent = binB;
+            document.getElementById('decimalB').textContent = decB;
+
+
+            // --- Bitwise Calculations ---
+            
+            // 1. AND
+            const andResult = decA & decB;
+            const andBin = decTo8BitBinary(andResult);
+            
+            // 2. OR
+            const orResult = decA | decB;
+            const orBin = decTo8BitBinary(orResult);
+
+            // 3. XOR
+            const xorResult = decA ^ decB;
+            const xorBin = decTo8BitBinary(xorResult);
+
+            // 4. NOT A (8-bit one's complement of A)
+            // Perform NOT operation within 8 bits (using XOR with 255)
+            const notAResult = decA ^ 255; 
+            const notABin = decTo8BitBinary(notAResult);
+            
+            // 5. Left Shift A (shift by 1 position)
+            // Use <<< 0 to ensure it's treated as a 32-bit integer then mask to 8-bit
+            const leftShiftResult = (decA << 1) & 255; 
+            const leftShiftBin = decTo8BitBinary(leftShiftResult);
+
+            // 6. Right Shift A (shift by 1 position) - NEW
+            // Use arithmetic right shift and mask to 8-bit (inputs are 0-255 so arithmetic shift behaves as logical here)
+            const rightShiftResult = (decA >> 1) & 255;
+            const rightShiftBin = decTo8BitBinary(rightShiftResult);
+
+
+            // --- Generate HTML Results ---
+            let htmlResults = '';
+            
+            htmlResults += createResultCard(`A AND B (${binA} & ${binB})`, andBin, andResult);
+            htmlResults += createResultCard(`A OR B (${binA} | ${binB})`, orBin, orResult);
+            htmlResults += createResultCard(`A XOR B (${binA} ^ ${binB})`, xorBin, xorResult);
+            htmlResults += createResultCard(`NOT A (~${binA})`, notABin, notAResult);
+            htmlResults += createResultCard(`A Left Shift 1 (${binA} << 1)`, leftShiftBin, leftShiftResult);
+            htmlResults += createResultCard(`A Right Shift 1 (${binA} >> 1)`, rightShiftBin, rightShiftResult); // NEW
+
+            document.getElementById('results').innerHTML = htmlResults;
+        }
+
+        /**
+         * Calculates and displays the custom 10-bit floating point representation (1 S, 4 E, 5 M, Bias 7).
+         */
+        function calculateCustomFloatingPoint() {
+            const decimal = parseFloat(document.getElementById('fpInput').value);
+            const resultDiv = document.getElementById('fpResult');
+            const EXP_BITS = 4;
+            const MANTISSA_BITS = 5;
+            const BIAS = Math.pow(2, EXP_BITS - 1) - 1; // Bias = 7
+
+            if (isNaN(decimal)) {
+                resultDiv.innerHTML = `<p class="text-red-500 font-semibold">Please enter a valid number.</p>`;
+                return;
+            }
+
+            if (decimal === 0) {
+                resultDiv.innerHTML = `
+                    <p class="font-bold text-lg text-pink-800 mb-2">10-Bit Floating Point Result (S=1, E=4, M=5)</p>
+                    <p class="font-mono text-xl text-center">
+                        <span class="text-red-500 font-bold">0</span> 
+                        <span class="text-green-600 font-bold">0000</span> 
+                        <span class="text-blue-600 font-bold">00000</span>
+                    </p>
+                    <p class="text-sm text-gray-600 mt-2 text-center">Value: +0 (Special Case: Zero)</p>
+                `;
+                return;
+            }
+
+            const sign = decimal < 0 ? 1 : 0;
+            const absDecimal = Math.abs(decimal);
+
+            // 1. Determine Exponent (E)
+            const exponentRaw = absDecimal === 0 ? 0 : Math.floor(Math.log2(absDecimal));
+            const exponentBiased = exponentRaw + BIAS;
+
+            // Check for overflow/underflow
+            if (exponentBiased < 1) { // Exponent 0 is reserved for subnormal/zero
+                resultDiv.innerHTML = `<p class="text-red-500 font-semibold">Underflow Error: Magnitude is too small to be represented (value is close to 0).</p>`;
+                return;
+            }
+            // Max exponent is (2^4 - 2) = 14 (1110). 15 (1111) is reserved for Inf/NaN.
+            if (exponentBiased >= Math.pow(2, EXP_BITS) - 1) { 
+                resultDiv.innerHTML = `<p class="text-red-500 font-semibold">Overflow Error: Magnitude is too large to be represented (result is $\\pm \\text{Infinity}$).</p>`;
+                return;
+            }
+            
+            // Convert Biased Exponent to 4-bit binary
+            const exponentBinary = exponentBiased.toString(2).padStart(EXP_BITS, '0');
+
+            // 2. Determine Mantissa (F)
+            const mantissaRaw = absDecimal / Math.pow(2, exponentRaw); // This is 1.F (normalized)
+            const fractionPart = mantissaRaw - 1; // This is 0.F
+            
+            // Scale fraction to fit 5 bits and truncate (simulates truncation/rounding)
+            const scaledFraction = fractionPart * Math.pow(2, MANTISSA_BITS);
+            const fractionInt = Math.floor(scaledFraction);
+
+            // Get the 5-bit binary fraction
+            const mantissaBinary = fractionInt.toString(2).padStart(MANTISSA_BITS, '0').substring(0, MANTISSA_BITS);
+
+            // Reconstruct approximated value (to show rounding error)
+            const reconstructedFraction = 1 + fractionInt / Math.pow(2, MANTISSA_BITS);
+            const reconstructedValue = (sign === 1 ? -1 : 1) * reconstructedFraction * Math.pow(2, exponentRaw);
+
+            // --- Format Output ---
+            
+            // Create the binary representation of the fractional part for the formula
+            const output = `
+                <p class="font-bold text-lg text-pink-800 mb-2">10-Bit Floating Point Result (S=1, E=4, M=5, Bias=${BIAS})</p>
+                
+                <div class="flex flex-wrap justify-between font-mono text-center text-xl mb-4">
+                    <div class="p-2 rounded-lg bg-red-100 border border-red-400 w-1/4">
+                        <p class="text-red-500 font-bold">${sign}</p>
+                        <p class="text-xs text-red-700">Sign (1)</p>
+                    </div>
+                    <div class="p-2 rounded-lg bg-green-100 border border-green-400 w-1/4">
+                        <p class="text-green-600 font-bold">${exponentBinary}</p>
+                        <p class="text-xs text-green-800">Exponent (4)</p>
+                    </div>
+                    <div class="p-2 rounded-lg bg-blue-100 border border-blue-400 w-1/4">
+                        <p class="text-blue-600 font-bold">${mantissaBinary}</p>
+                        <p class="text-xs text-blue-800">Mantissa (5)</p>
+                    </div>
+                </div>
+
+                <p class="font-mono text-2xl text-center mb-4 break-all">
+                    <span class="text-red-500">${sign}</span>
+                    <span class="text-green-600">${exponentBinary}</span>
+                    <span class="text-blue-600">${mantissaBinary}</span>
+                </p>
+
+                <p class="text-sm text-gray-700">
+                    Original Value: <span class="font-semibold">${decimal}</span><br>
+                    Approx. Value: <span class="font-semibold text-pink-600">${reconstructedValue.toFixed(6)}</span> (Due to ${MANTISSA_BITS}-bit precision)<br>
+                    Raw Exponent: ${exponentRaw} (Biased: ${exponentBiased})<br>
+                    Approximation Formula: $$(-1)^{${sign}} \\times (1.${mantissaBinary})_2 \\times 2^{${exponentRaw}}$$
+                </p>
+            `;
+            resultDiv.innerHTML = output;
+        }
+
+        // --- Tab Switching Logic ---
+
+        function showTab(tabId) {
+            // Hide all tab content
+            document.querySelectorAll('.tab-content').forEach(content => {
+                content.classList.add('hidden');
+            });
+
+            // Deactivate all buttons
+            document.querySelectorAll('.tab-button').forEach(button => {
+                button.classList.remove('active');
+            });
+
+            // Show the selected tab content
+            document.getElementById(tabId).classList.remove('hidden');
+
+            // Activate the corresponding button
+            document.querySelector(`.tab-button[onclick*="${tabId}"]`).classList.add('active');
+
+            // If it's the bitwise lab, calculate the initial values
+            if (tabId === 'bitwise-lab') {
+                calculateBitwise();
+                // Also run the custom floating point calculation on load
+                calculateCustomFloatingPoint();
+            }
+        }
+
+        // Initialize the app on load
+        window.onload = () => {
+            showTab('units-explorer');
+        };
+
+    </script>
+</body>
+</html>
